@@ -8,4 +8,25 @@
     <insert id="insertUser">
         insert into t_user values(null,'xxyw','123456',23,'男','12345@qq.com')
     </insert>
+    
+<!--  void updateUser();  -->
+    <update id="updateUser">
+        update t_user set username='root', password='123' where id=3
+    </update>
+
+<!--  void deleteUser();  -->
+    <delete id="deleteUser">
+        delete from t_user where id=3
+    </delete>
+
+<!--  User getUserById();  -->
+    <select id="getUserById" resultType="com.xxyw.mybatis.pojo.User">
+        select * from t_user where id = 2
+    </select>
+
+<!--  List<User> getAllUser();  -->
+    <select id="getAllUser" resultType="com.xxyw.mybatis.pojo.User">
+        select * from t_user
+    </select>
+
 </mapper>

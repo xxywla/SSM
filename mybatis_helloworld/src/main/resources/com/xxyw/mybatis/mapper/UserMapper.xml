@@ -8,7 +8,7 @@
     <insert id="insertUser">
         insert into t_user values(null,'xxyw','123456',23,'男','12345@qq.com')
     </insert>
-    
+
 <!--  void updateUser();  -->
     <update id="updateUser">
         update t_user set username='root', password='123' where id=3
@@ -25,7 +25,7 @@
     </select>
 
 <!--  List<User> getAllUser();  -->
-    <select id="getAllUser" resultType="com.xxyw.mybatis.pojo.User">
+    <select id="getAllUser" resultType="User">
         select * from t_user
     </select>
 

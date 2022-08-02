@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xxyw.mybatis.mapper.DeptMapper">
+
+<!--  Dept getDeptByStepTwo(@Param("deptId") Integer deptId);  -->
+    <select id="getDeptByStepTwo" resultType="Dept">
+        select * from t_dept where dept_id = #{deptId}
+    </select>
+
+    <resultMap id="deptAndEmpResultMap" type="dept">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+        <collection property="empList" ofType="Emp">
+            <id column="emp_id" property="empId"/>
+            <result column="emp_name" property="empName"/>
+            <result column="gender" property="gender"/>
+            <result column="age" property="age"/>
+        </collection>
+    </resultMap>
+<!--  Dept getDeptAndEmpById(@Param("deptId") Integer deptId);  -->
+    <select id="getDeptAndEmpById" resultMap="deptAndEmpResultMap">
+        select * from t_dept left join t_emp on t_dept.dept_id = t_emp.dept_id where t_dept.dept_id = #{deptId}
+    </select>
+
+    <resultMap id="deptAndEmpStepResultMap" type="dept">
+        <id column="dept_id" property="deptId"/>
+        <id column="dept_name" property="deptName"/>
+        <collection property="empList" select="com.xxyw.mybatis.mapper.EmpMapper.getDeptAndEmpStepTwo" column="dept_id" fetchType="eager"/>
+    </resultMap>
+<!--  Dept getDeptAndEmpStepOne(@Param("deptId") Integer deptId);  -->
+    <select id="getDeptAndEmpStepOne" resultMap="deptAndEmpStepResultMap">
+        select * from t_dept where dept_id = #{deptId}
+    </select>
+
+</mapper>

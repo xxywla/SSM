@@ -50,4 +50,47 @@
             </if>
     </select>
 
+<!--  List<Emp> getEmpListByChoose(Emp emp);  -->
+    <select id="getEmpListByChoose" resultType="Emp">
+        select * from t_emp
+        <where>
+            <choose>
+                <when test="empName != null and empName != ''">
+                    emp_name = #{empName}
+                </when>
+                <when test="age != null and age != ''">
+                    age = #{age}
+                </when>
+                <when test="gender != null and gender != ''">
+                    gender = #{gender}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+<!--  void insertSomeEmp(@Param("empList") List<Emp> empList);  -->
+    <insert id="insertSomeEmp">
+        insert into t_emp values
+        <foreach collection="empList" item="emp" separator=",">
+            (null, #{emp.empName}, #{emp.age}, #{emp.gender}, null)
+        </foreach>
+    </insert>
+
+<!--  void deleteSomeEmp(@Param("empIds") int[] empIds);  -->
+    <delete id="deleteSomeEmp">
+        delete from t_emp where emp_id in
+        <foreach collection="empIds" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <sql id="empColumns">
+        emp_id, emp_name, age, gender, dept_id
+    </sql>
+
+<!--  List<Emp> getEmpList();  -->
+    <select id="getEmpList" resultType="emp">
+        select <include refid="empColumns"/> from t_emp
+    </select>
+
 </mapper>

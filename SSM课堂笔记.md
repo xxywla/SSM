@@ -102,3 +102,10 @@ property标签中的value值使用 `${}` 引用jdbc.properties中的值。
 
 此时要保证接口UserMapper.java和UserMapper.xml同名且所在包名相同。
 即java文件在java目录的com.xxyw.mybatis.mapper目录下，同名的xml文件在resources目录的com.xxyw.mybatis.mapper目录下。
+
+# Spring
+
+## xml管理Bean
+
+### 获取Bean的3中方式
+

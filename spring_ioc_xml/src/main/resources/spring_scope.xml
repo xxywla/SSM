@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.xxyw.spring.pojo.Student" scope="prototype">
+        <property name="sid" value="12"/>
+        <property name="sname" value="橘右京"/>
+        <property name="age" value="18"/>
+        <property name="gender" value="男"/>
+    </bean>
+
+</beans>

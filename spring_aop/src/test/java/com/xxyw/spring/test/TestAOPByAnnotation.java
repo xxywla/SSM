@@ -1,6 +1,6 @@
 package com.xxyw.spring.test;
 
-import com.xxyw.spring.aop.Calculator;
+import com.xxyw.spring.aop.annotation.Calculator;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

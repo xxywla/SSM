@@ -1,4 +1,4 @@
-package com.xxyw.spring.aop;
+package com.xxyw.spring.aop.annotation;
 
 public interface Calculator {
     int add(int i, int j);

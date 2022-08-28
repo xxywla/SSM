@@ -1,4 +1,4 @@
-package com.xxyw.spring.aop;
+package com.xxyw.spring.aop.xml;
 
 import org.springframework.stereotype.Component;
 

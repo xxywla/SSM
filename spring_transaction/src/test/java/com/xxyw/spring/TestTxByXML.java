@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:tx_annotation.xml")
-public class TestTxByAnnotation {
+@ContextConfiguration("classpath:tx_xml.xml")
+public class TestTxByXML {
 
     @Autowired
     private BookController bookController;

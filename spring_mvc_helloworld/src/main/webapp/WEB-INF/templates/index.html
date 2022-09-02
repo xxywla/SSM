@@ -17,5 +17,37 @@
     <input type="submit" value="提交"/>
 </form>
 
+<hr>
+测试参数名匹配
+<form th:action="@{/param1}" method="post">
+    用户名<input type="text" name="username" value="宫本武藏"/><br>
+    密码<input type="password" name="password" value="123456"/><br>
+    <input type="submit" value="提交"/>
+</form>
+
+<hr>
+测试参数名不匹配
+<form th:action="@{/param2}" method="post">
+    用户名<input type="text" name="name" value="宫本武藏"/><br>
+    密码无
+    <input type="submit" value="提交"/>
+</form>
+
+<hr>
+测试Header和CookieValue
+<form th:action="@{/param3}" method="post">
+    用户名<input type="text" name="username" value="宫本武藏"/><br>
+    密码<input type="password" name="password" value="123456"/><br>
+    <input type="submit" value="提交"/>
+</form>
+
+<hr>
+测试pojo传参
+<form th:action="@{/param/pojo}" method="post">
+    用户名<input type="text" name="username" value="宫本武藏"/><br>
+    密码<input type="password" name="password" value="123456"/><br>
+    <input type="submit" value="提交"/>
+</form>
+
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工管理系统</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+
+<div id="app">
+
+    <table>
+        <tr>
+            <th colspan="5">员工管理系统</th>
+            <th><a th:href="@{/to/add}">添加新员工</a></th>
+        </tr>
+        <tr>
+            <td>流水号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>部门</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="emp, status : ${employeeList}">
+            <td th:text="${status.count}">流水号</td>
+            <td th:text="${emp.empName}">姓名</td>
+            <td th:text="${emp.age}">年龄</td>
+            <td th:text="${emp.gender}">性别</td>
+            <td th:text="${emp.deptId}">部门</td>
+            <td>
+                <a th:href="@{|/to/edit/${emp.empId}|}">修改</a>
+                <a th:href="@{|/employee/${emp.empId}|}" @click="deleteEmployee">删除</a>
+            </td>
+        </tr>
+    </table>
+    <form method="post">
+        <input type="hidden" name="_method" value="delete">
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: "#app",
+        methods: {
+            deleteEmployee: function (event) {
+                // 获取form表单
+                var form = document.getElementsByTagName("form")[0]
+                // 把form表单的提交action设置为超链接的路径
+                form.action = event.target.href;
+                // 提交form表单
+                form.submit();
+                // 取消超链接的跳转
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
